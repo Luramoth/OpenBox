@@ -10,6 +10,7 @@ func _ready():
 	if XR_interface and XR_interface.is_initialized():
 		print("OpenXR Initialised")
 		
+		# turn off vsync so headset framerate isent limited to monitor refresh rate
 		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
 		
 		get_viewport().use_xr = true

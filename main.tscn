@@ -1,7 +1,54 @@
-[gd_scene load_steps=2 format=3 uid="uid://btnu4oqkb0n8r"]
+[gd_scene load_steps=12 format=3 uid="uid://btnu4oqkb0n8r"]
 
 [ext_resource type="PackedScene" uid="uid://cqnq6fd50pw4c" path="res://player.tscn" id="1_03gar"]
+[ext_resource type="Material" uid="uid://du1jwojq11paj" path="res://Assets/OpenBox/Letters/OpenBoxLetters.tres" id="2_14pja"]
+[ext_resource type="ArrayMesh" uid="uid://bkbqbat6dc0n3" path="res://Assets/OpenBox/Letters/OpenBoxLetters.obj" id="3_681wc"]
+[ext_resource type="Material" uid="uid://5byevcdbv6je" path="res://Assets/OpenBox/Openbox.tres" id="4_8ueqd"]
+[ext_resource type="ArrayMesh" uid="uid://d1lyr8idhtiyj" path="res://Assets/OpenBox/OpenBox.obj" id="5_lhbox"]
+
+[sub_resource type="Gradient" id="Gradient_efvh7"]
+colors = PackedColorArray(0, 0, 0.176471, 1, 0, 0.745098, 0.686275, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_krcu4"]
+gradient = SubResource("Gradient_efvh7")
+fill_from = Vector2(0, 1)
+fill_to = Vector2(0, 0)
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_bwap5"]
+panorama = SubResource("GradientTexture2D_krcu4")
+
+[sub_resource type="Sky" id="Sky_0ghge"]
+sky_material = SubResource("PanoramaSkyMaterial_bwap5")
+
+[sub_resource type="Environment" id="Environment_4ob8n"]
+background_mode = 2
+sky = SubResource("Sky_0ghge")
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_pccl7"]
 
 [node name="main" type="Node3D"]
 
 [node name="Player" parent="." instance=ExtResource("1_03gar")]
+
+[node name="OpenBoxLetters" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.87419, 0, -7.61551)
+material_override = ExtResource("2_14pja")
+mesh = ExtResource("3_681wc")
+
+[node name="OpenBox" type="MeshInstance3D" parent="OpenBoxLetters"]
+transform = Transform3D(-3.0598e-08, 0, -0.7, 0, 0.7, 0, 0.7, 0, -3.0598e-08, -7.74069, 1.34413, -0.00111628)
+material_override = ExtResource("4_8ueqd")
+mesh = ExtResource("5_lhbox")
+skeleton = NodePath("../..")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_4ob8n")
+camera_attributes = SubResource("CameraAttributesPractical_pccl7")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.932115, 0.248892, -0.263085, -0.099029, 0.873907, 0.475898, 0.348359, -0.417539, 0.83923, 2.16393, 3.38077, 2.39068)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.87612, 1.67033, -7.59895)
+light_energy = 16.0
+omni_range = 5.6897

@@ -22,6 +22,10 @@ XRToolsUserSettings="*res://addons/godot-xr-tools/user_settings/user_settings.gd
 
 enabled=PackedStringArray("res://addons/godot-xr-tools/plugin.cfg", "res://addons/wakatime/plugin.cfg")
 
+[physics]
+
+common/physics_ticks_per_second=90
+
 [rendering]
 
 renderer/rendering_method="mobile"

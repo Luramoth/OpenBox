@@ -1,3 +1,7 @@
 [gd_resource type="StandardMaterial3D" format=3 uid="uid://5byevcdbv6je"]
 
 [resource]
+cull_mode = 2
+metallic = 0.88
+metallic_specular = 0.58
+roughness = 0.52

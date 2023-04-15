@@ -1,10 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://cqnq6fd50pw4c"]
+[gd_scene load_steps=5 format=3 uid="uid://cqnq6fd50pw4c"]
 
+[ext_resource type="Script" path="res://player.gd" id="1_5notn"]
 [ext_resource type="PackedScene" uid="uid://cy03d57iyrci" path="res://addons/godot-xr-tools/hands/scenes/highpoly/left_physics_hand.tscn" id="1_a67y5"]
 [ext_resource type="PackedScene" path="res://addons/godot-xr-tools/misc/vr_common_shader_cache.tscn" id="1_podja"]
 [ext_resource type="PackedScene" uid="uid://kcqomcjq52np" path="res://addons/godot-xr-tools/hands/scenes/highpoly/right_physics_hand.tscn" id="2_d6f0m"]
 
 [node name="Player" type="Node3D"]
+script = ExtResource("1_5notn")
 
 [node name="XROrigin3D" type="XROrigin3D" parent="."]
 

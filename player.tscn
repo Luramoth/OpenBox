@@ -1,11 +1,23 @@
-[gd_scene load_steps=7 format=3 uid="uid://ipwycuo7tl6l"]
+[gd_scene load_steps=11 format=3 uid="uid://ipwycuo7tl6l"]
 
 [ext_resource type="PackedScene" uid="uid://cy03d57iyrci" path="res://addons/godot-xr-tools/hands/scenes/highpoly/left_physics_hand.tscn" id="1_a67y5"]
 [ext_resource type="PackedScene" path="res://addons/godot-xr-tools/misc/vr_common_shader_cache.tscn" id="1_podja"]
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_whr7h"]
 [ext_resource type="PackedScene" uid="uid://kcqomcjq52np" path="res://addons/godot-xr-tools/hands/scenes/highpoly/right_physics_hand.tscn" id="2_d6f0m"]
+[ext_resource type="PackedScene" uid="uid://cme66uldrjl2i" path="res://addons/godot-xr-tools/interactables/interactable_area_button.tscn" id="4_52kei"]
 [ext_resource type="ArrayMesh" uid="uid://djg16abpretjx" path="res://Assets/PhysBand/PhysBand.obj" id="5_p1kvb"]
+[ext_resource type="AudioStream" uid="uid://cvn126jb8xpsc" path="res://Assets/Sounds/Open.sfxr" id="5_qm4ih"]
 [ext_resource type="Material" uid="uid://drsnnau3lmtue" path="res://Assets/PhysBand/physband.tres" id="6_6iti6"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1sv0n"]
+margin = 0.0
+size = Vector3(0.00282276, 0.02, 0.02)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_hv26o"]
+flip_faces = true
+size = Vector2(0.02, 0.02)
+center_offset = Vector3(-0.005, 0, 0)
+orientation = 0
 
 [node name="Player" type="Node3D"]
 script = ExtResource("1_whr7h")
@@ -17,11 +29,32 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
 
 [node name="VRCommonShaderCache" parent="XROrigin3D/XRCamera3D" instance=ExtResource("1_podja")]
 
+[node name="AudioListener3D" type="AudioListener3D" parent="XROrigin3D/XRCamera3D"]
+current = true
+
 [node name="XRControllerLeft" type="XRController3D" parent="XROrigin3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1, -0.5)
 tracker = &"left_hand"
 
 [node name="LeftPhysicsHand" parent="XROrigin3D/XRControllerLeft" instance=ExtResource("1_a67y5")]
+collision_layer = 262144
+
+[node name="MenuButton" parent="XROrigin3D/XRControllerLeft" instance=ExtResource("4_52kei")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0594583, -0.0301886, 0.0986612)
+button = NodePath("MeshInstance3D")
+displacement = Vector3(0.01, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="XROrigin3D/XRControllerLeft/MenuButton"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00552779, 0, 0)
+shape = SubResource("BoxShape3D_1sv0n")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="XROrigin3D/XRControllerLeft/MenuButton"]
+mesh = SubResource("PlaneMesh_hv26o")
+
+[node name="MenuOpenSFX" type="AudioStreamPlayer3D" parent="XROrigin3D/XRControllerLeft/MenuButton"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0594583, 0.0301886, -0.0986612)
+stream = ExtResource("5_qm4ih")
+max_distance = 2.0
 
 [node name="XRControllerRight" type="XRController3D" parent="XROrigin3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1, -0.5)
@@ -34,3 +67,5 @@ transform = Transform3D(1.91069e-15, 1, 4.37114e-08, 4.37114e-08, -4.37114e-08, 
 mesh = ExtResource("5_p1kvb")
 skeleton = NodePath("../../../..")
 surface_material_override/0 = ExtResource("6_6iti6")
+
+[connection signal="button_pressed" from="XROrigin3D/XRControllerLeft/MenuButton" to="." method="_on_menu_button_button_pressed"]

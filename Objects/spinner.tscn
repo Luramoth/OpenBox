@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://q8hl8f3uory4"]
+
+[ext_resource type="Script" path="res://Scripts/spinner.gd" id="1_xuet3"]
+
+[node name="spinner" type="Node3D"]
+script = ExtResource("1_xuet3")

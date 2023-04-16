@@ -1,14 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://cqnq6fd50pw4c"]
+[gd_scene load_steps=7 format=3 uid="uid://ipwycuo7tl6l"]
 
-[ext_resource type="Script" path="res://player.gd" id="1_5notn"]
 [ext_resource type="PackedScene" uid="uid://cy03d57iyrci" path="res://addons/godot-xr-tools/hands/scenes/highpoly/left_physics_hand.tscn" id="1_a67y5"]
 [ext_resource type="PackedScene" path="res://addons/godot-xr-tools/misc/vr_common_shader_cache.tscn" id="1_podja"]
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_whr7h"]
 [ext_resource type="PackedScene" uid="uid://kcqomcjq52np" path="res://addons/godot-xr-tools/hands/scenes/highpoly/right_physics_hand.tscn" id="2_d6f0m"]
 [ext_resource type="ArrayMesh" uid="uid://djg16abpretjx" path="res://Assets/PhysBand/PhysBand.obj" id="5_p1kvb"]
 [ext_resource type="Material" uid="uid://drsnnau3lmtue" path="res://Assets/PhysBand/physband.tres" id="6_6iti6"]
 
 [node name="Player" type="Node3D"]
-script = ExtResource("1_5notn")
+script = ExtResource("1_whr7h")
 
 [node name="XROrigin3D" type="XROrigin3D" parent="."]
 

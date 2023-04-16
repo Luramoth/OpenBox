@@ -1,10 +1,12 @@
-[gd_scene load_steps=12 format=3 uid="uid://btnu4oqkb0n8r"]
+[gd_scene load_steps=14 format=3 uid="uid://btnu4oqkb0n8r"]
 
-[ext_resource type="PackedScene" uid="uid://cqnq6fd50pw4c" path="res://player.tscn" id="1_03gar"]
+[ext_resource type="PackedScene" uid="uid://ipwycuo7tl6l" path="res://player.tscn" id="1_03gar"]
 [ext_resource type="Material" uid="uid://du1jwojq11paj" path="res://Assets/OpenBox/Letters/OpenBoxLetters.tres" id="2_14pja"]
 [ext_resource type="ArrayMesh" uid="uid://bkbqbat6dc0n3" path="res://Assets/OpenBox/Letters/OpenBoxLetters.obj" id="3_681wc"]
 [ext_resource type="Material" uid="uid://5byevcdbv6je" path="res://Assets/OpenBox/Openbox.tres" id="4_8ueqd"]
 [ext_resource type="ArrayMesh" uid="uid://d1lyr8idhtiyj" path="res://Assets/OpenBox/OpenBox.obj" id="5_lhbox"]
+[ext_resource type="PackedScene" uid="uid://q8hl8f3uory4" path="res://Objects/spinner.tscn" id="6_ynekg"]
+[ext_resource type="PlaneMesh" uid="uid://c8dgjdl671ciy" path="res://resorces/Meshes/PARTICLE_Streak.tres" id="7_qx703"]
 
 [sub_resource type="Gradient" id="Gradient_efvh7"]
 colors = PackedColorArray(0, 0, 0.176471, 1, 0, 0.745098, 0.686275, 1)
@@ -41,6 +43,9 @@ material_override = ExtResource("4_8ueqd")
 mesh = ExtResource("5_lhbox")
 skeleton = NodePath("../..")
 
+[node name="spinner" parent="OpenBoxLetters/OpenBox" instance=ExtResource("6_ynekg")]
+speed = Vector3(0, 2, 0)
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_4ob8n")
 camera_attributes = SubResource("CameraAttributesPractical_pccl7")
@@ -52,3 +57,22 @@ transform = Transform3D(0.932115, 0.248892, -0.263085, -0.099029, 0.873907, 0.47
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.87612, 1.67033, -7.59895)
 light_energy = 16.0
 omni_range = 5.6897
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -173.051)
+amount = 100
+lifetime = 2.0
+mesh = ExtResource("7_qx703")
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 10)
+emission_ring_height = 100.0
+emission_ring_radius = 100.0
+emission_ring_inner_radius = 0.0
+direction = Vector3(0, 0, 100)
+spread = 94.09
+flatness = 0.3
+gravity = Vector3(0, 0, 150)
+linear_accel_min = 46.46
+linear_accel_max = 47.99
+radial_accel_min = 12.12
+radial_accel_max = 24.24

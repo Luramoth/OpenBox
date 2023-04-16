@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://crql0fuygyogj"]
+
+[ext_resource type="Texture2D" uid="uid://dd3hhafjferh8" path="res://Assets/UI/SQ icon temp.svg" id="1_nql72"]
+
+[resource]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+albedo_texture = ExtResource("1_nql72")

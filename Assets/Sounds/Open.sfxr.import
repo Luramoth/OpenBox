@@ -1,0 +1,17 @@
+[remap]
+
+importer="com.timothyqiu.gdfxr.importer"
+type="AudioStreamWAV"
+uid="uid://cvn126jb8xpsc"
+path="res://.godot/imported/Open.sfxr-036c2dcec3f60182fa466885ce64e17a.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/Open.sfxr"
+dest_files=["res://.godot/imported/Open.sfxr-036c2dcec3f60182fa466885ce64e17a.sample"]
+
+[params]
+
+loop=false
+bit_depth=0
+sample_rate=0
